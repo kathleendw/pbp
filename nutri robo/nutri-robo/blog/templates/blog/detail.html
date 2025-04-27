@@ -1,0 +1,161 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ post.title }} | {% endblock %}
+
+{% block content %}
+
+    
+
+    <div class="block ">
+      <div class="column is-8 is-offset-2">
+
+        
+        <!-- Article Section -->
+        <div class="card article">
+          <div class="card-content">
+              <div class="media">
+                  <div class="media-center">
+                    {% load static %} <img src="{% static '/images/admin_kochenk.png' %}" class="author-image" alt="Placeholder image">
+                  </div>
+                  <div class="media-content has-text-centered">
+                    
+                      <p class="title article-title has-text-weight-bold">{{ post.title }}</p>
+                      <p class="subtitle is-6 article-subtitle">
+                          <p class="is-size-6">Published on {{ post.created_at|date:'M d, Y' }}</p>
+                      </p>
+                  </div>
+              </div>
+              <div class="content article-body is-size-5">
+                <p>{{ post.body|safe }}</p>
+              </div>
+          </div>
+      </div>
+      <!-- End Article Section  -->
+      </div>
+    </div>
+
+    <!-- Add Comment Section -->
+
+        <div class="block">
+          <div class="column is-8 is-offset-2">
+            <div class="card article">
+              <div class="card-content">
+                  <div class="media">
+                      <div class="media-content has-text-left">
+                        <div class="content article-body">
+                            <p class="title article-title has-text-weight-bold">Add Comments</p>
+                            <form method="post" class="mb-6" id="commentForm">
+                                {% csrf_token %}
+                                <p>
+                                    <div class="field">
+                                        <label class="label is-size-5" for="id_name">Name:</label>
+                                        <div class="control">
+                                            <input readonly value="{{ request.user }}" class="input is-size-5" type="text" name="name" maxlength="254" required id="id_name" >
+                                        </div>
+                                    </div>
+                                </p>
+                                
+                                <p>
+                                    <div class="field">
+                                        <label class="label is-size-5" for="id_email">Email:</label>
+                                        <div class="control">
+                                            <input class="input is-size-5" type="email" name="email" placeholder="Your email" maxlength="254" required id="id_email" >
+                                        </div>
+                                    </div>
+                                </p>
+
+                                <p>
+                                    <div class="field">
+                                        <label class="label is-size-5">Comment:</label>
+                                        <div class="control">
+                                          <textarea class="textarea has-fixed-size is-size-5" name="comment" placeholder="Enter your comment.." required id="id_message"></textarea>
+                                        </div>
+                                      </div>
+                                </p>
+                                <button type="submit" class="button is-success is-size-5" id="submit" data-target="modal-js-example">Submit Comment</button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- End Add Comment Section -->
+
+    <!-- Add comments with AJAX & manipulate the DOM -->
+    <script>
+        let form = document.getElementById('commentForm'); /* mengambil form */
+        form.addEventListener('submit', stopReload); /* trigger buat stopReload */
+        console.log("TES");
+        function stopReload(e){ 
+            e.preventDefault() /* mencegah halaman reload */
+            $.ajax({
+                type: "POST",
+                url: "{% url 'post_detail' post.slug %}",
+                data: $("#commentForm").serialize(),
+                datatype: "json",
+                success: function(data){
+                    form.reset(); /* mereset form setelah submit diklik */
+                    console.log(data.commenter + " yang isinya " + data.commenter_message);
+                    $('.komentar').append( /* menambahkan komentar baru */
+                        `<article class="media">
+                            <div class="content media-content mb-5">
+                                <p class="is-size-4 has-text-weight-bold">${data.commenter}</p>
+                                <p class="is-size-6 mb-5">Posted on ${data.commenter_posted_on}</p>
+                                <p class="is-size-5">${data.commenter_message}</p>
+                            </div>
+                        </article>`
+                    )
+                    if (data.jumlah_komentar == 1) {
+                        $('.jumlah_komentar').text(data.jumlah_komentar + " Comment") /* kalo jumlah komentarnya tunggal */
+                    } else {
+                        $('.jumlah_komentar').text(data.jumlah_komentar + " Comments") /* kalo jumlah komentarnya jamak */
+                    }
+                }
+            })
+        }
+    </script>
+
+    <!-- Comment Section -->
+        <div class="block">
+          <div class="column is-8 is-offset-2">
+            <div class="card article">
+              <div class="card-content">
+                  <div class="media">
+                      <div class="media-content has-text-left">
+                        <div class="content article-body komentar">
+                            {% with post.comments.all.count as total_comments %}
+                            {% if total_comments == 0 %}
+                                <p class="title article-title has-text-weight-bold jumlah_komentar">No comments yet.</p>
+                            {% else %}
+                                <p class="title article-title has-text-weight-bold jumlah_komentar">{{ total_comments }} Comment{{ total_comments|pluralize }}</p>
+                            {% for comment in post.comments.all %}
+                                <article class="media">
+                                    <div class="content media-content mb-5">
+                                        <p class="is-size-4 has-text-weight-bold">{{ comment.name }}</p>
+                                        <p class="is-size-6 mb-5">Posted on {{ comment.created_at }}</p>
+                                        <p class="is-size-5">{{ comment.comment }}</p>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- End Comment Section -->
+    
+</div>
+</div>
+<div class="block">
+    <div class="column is-8 is-offset-2 mt-5">
+    <p class="has-text-centered has-text-weight-light is-family-monospace">You're logged in as {{request.user}}. Your last login was on {{last_login}}</p>
+    </div>
+</div>
+
+{% endblock %}

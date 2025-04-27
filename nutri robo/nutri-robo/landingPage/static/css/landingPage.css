@@ -1,0 +1,719 @@
+:root {
+    --red: #ef233c;
+    --darkred: #c00424;
+    --platinum: #e5e5e5;
+    --black: #2b2d42;
+    --white: #fff;
+    --thumb: #edf2f4;
+    --custom: #264655;
+}
+
+* {
+    font-family: 'Futura', Arial, sans-serif;
+    text-align: center;
+    vertical-align: middle; 
+    color: #264655;
+}
+
+.navbar {
+    background-color: white;
+    height: 75px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+
+.navbarButton {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.navbarButton:hover {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.carousel {
+    height: 500px;
+    width: 1000px;
+    margin-top: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.carousel .carousel-item {
+    height: 500px;
+    width: 1000px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+}
+
+.carousel .carousel-item h5 {
+    font-family: 'Futura', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+#carouselLabel1 {
+    margin-bottom: 120px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+#carouselLabel1:hover {
+    margin-bottom: 120px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    background-color: rgb(251, 251, 251, 0.75);
+}
+
+#carouselLabel2 {
+    margin-bottom: 175px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+#carouselLabel2:hover {
+    margin-bottom: 175px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    background-color: rgb(251, 251, 251, 0.75);
+}
+
+#carouselLabel3 {
+    margin-bottom: 165px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+#carouselLabel3:hover {
+    margin-bottom: 165px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    background-color: rgb(251, 251, 251, 0.75);
+}
+
+#carouselLabel4 {
+    margin-bottom: 165px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+#carouselLabel4:hover {
+    margin-bottom: 165px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    background-color: rgb(251, 251, 251, 0.75);
+}
+
+#carouselLabel5 {
+    margin-bottom: 175px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+#carouselLabel5:hover {
+    margin-bottom: 175px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    background-color: rgb(251, 251, 251, 0.75);
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+.container {
+    max-width: 1400px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.cards {
+    display: flex;
+    padding: 25px 15px 25px 15px;
+    list-style: none;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    background-color: rgb(219, 232, 246);
+    border-radius: 5px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    scroll-snap-align: 0;
+    transition: all 0.3s;
+    background-image: url(https://img.freepik.com/free-vector/cute-gird-background-minimal-pink-design-vector_53876-156576.jpg?w=996&t=st=1667224166~exp=1667224766~hmac=3442bd0cd1f81f87c14ee53b2eeaa1333bda4b3197319ed73c22616b7379f820);
+}
+
+.card:not(:last-child) {
+    margin-right: 10px;
+}
+
+.card:hover {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 50%);
+    background-image: url(https://img.freepik.com/free-vector/cute-gird-background-minimal-pink-design-vector_53876-156576.jpg?w=996&t=st=1667224166~exp=1667224766~hmac=3442bd0cd1f81f87c14ee53b2eeaa1333bda4b3197319ed73c22616b7379f820);
+}
+
+.card .card-title {
+    font-size: 14px;
+    text-align: right;
+    font-weight: bolder;
+}
+
+.card .card-subtitle {
+    font-size: 14px;
+    text-align: right;
+}
+
+.card .card-content {
+    margin: auto;
+    font-size: 14px;
+    max-width: 85%;
+    font-weight: bolder;
+}
+
+.card .card-link-wrapper {
+    margin-top: auto;
+}
+
+.cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards::-webkit-scrollbar-thumb,
+.cards::-webkit-scrollbar-track {
+    border-radius: 64px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background: var(--custom);
+}
+
+.cards::-webkit-scrollbar-track {
+    background: var(--thumb);
+}
+
+@media (min-width: 300px) {
+    .card {
+    flex-basis: calc(50% - 10px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 20px;
+    }
+
+    #logoImage {
+        width: 150px;
+        height: 35px;
+    }
+
+    .navbarButton {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+        font-size: x-small;
+    }
+    
+    .navbarButton:hover {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+
+    .carousel {
+        height: 125px;
+        width: 250px;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        height: 125px;
+        width: 250px;
+        position: relative;
+        z-index: -1;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        opacity: 0.5;
+    }
+
+    .carousel .carousel-item {
+        height: 125px;
+        width: 250px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    }
+    
+    .carousel .carousel-item h5 {
+        font-family: 'Futura', Arial, sans-serif;
+        font-weight: bolder;
+        font-size: xx-small;
+    }
+
+    .carousel .carousel-item p {
+        font-family: 'Futura', Arial, sans-serif;
+        font-size: xx-small;
+    }
+    
+    #carouselLabel1 {
+        margin-bottom: -10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel1:hover {
+        margin-bottom: -10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel2 {
+        margin-bottom: -15px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel2:hover {
+        margin-bottom: -15px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel3 {
+        margin-bottom: -20px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel3:hover {
+        margin-bottom: -20px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel4 {
+        margin-bottom: -10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel4:hover {
+        margin-bottom: -10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel5 {
+        margin-bottom: -7px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel5:hover {
+        margin-bottom: -7px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+}
+
+@media (min-width: 500px) {
+    .card {
+    flex-basis: calc(50% - 10px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 20px;
+    }
+
+    #logoImage {
+        width: 225px;
+        height: 55px;
+    }
+
+    .navbarButton {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+        font-size: small;
+    }
+    
+    .navbarButton:hover {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+
+    .carousel {
+        height: 200px;
+        width: 400px;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        height: 200px;
+        width: 400px;
+        position: relative;
+        z-index: -1;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        opacity: 0.5;
+    }
+
+    .carousel .carousel-item {
+        height: 200px;
+        width: 400px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    }
+    
+    .carousel .carousel-item h5 {
+        font-family: 'Futura', Arial, sans-serif;
+        font-weight: bolder;
+        font-size: smaller;
+    }
+
+    .carousel .carousel-item p {
+        font-family: 'Futura', Arial, sans-serif;
+        font-size: smaller;
+    }
+    
+    #carouselLabel1 {
+        margin-bottom: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel1:hover {
+        margin-bottom: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel2 {
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel2:hover {
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel3 {
+        margin-bottom: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel3:hover {
+        margin-bottom: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel4 {
+        margin-bottom: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel4:hover {
+        margin-bottom: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel5 {
+        margin-bottom: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel5:hover {
+        margin-bottom: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+}
+
+@media (min-width: 700px) {
+    .card {
+    flex-basis: calc(calc(100% / 3) - 20px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 30px;
+    }
+
+    .navbarButton {
+        font-size: medium;
+    }
+
+    .carousel {
+        height: 300px;
+        width: 600px;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        height: 300px;
+        width: 600px;
+        position: relative;
+        z-index: -1;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        opacity: 0.5;
+    }
+
+    .carousel .carousel-item {
+        height: 300px;
+        width: 600px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    }
+    
+    .carousel .carousel-item h5 {
+        font-family: 'Futura', Arial, sans-serif;
+        font-weight: bolder;
+        font-size: medium;
+    }
+
+    .carousel .carousel-item p {
+        font-family: 'Futura', Arial, sans-serif;
+        font-size: medium;
+    }
+    
+
+    #carouselLabel1 {
+        margin-bottom: 40px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel1:hover {
+        margin-bottom: 40px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel2 {
+        margin-bottom: 70px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel2:hover {
+        margin-bottom: 70px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel3 {
+        margin-bottom: 60px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel3:hover {
+        margin-bottom: 60px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel4 {
+        margin-bottom: 70px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel4:hover {
+        margin-bottom: 70px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel5 {
+        margin-bottom: 70px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel5:hover {
+        margin-bottom: 70px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+}
+
+@media (min-width: 1100px) {
+    .card {
+    flex-basis: calc(25% - 30px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 40px;
+    }
+
+    .carousel {
+        height: 500px;
+        width: 1000px;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        z-index: -1;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        opacity: 0.5;
+    }
+
+    .carousel .carousel-item {
+        height: 500px;
+        width: 1000px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+    }
+    
+    .carousel .carousel-item h5 {
+        font-family: 'Futura', Arial, sans-serif;
+        font-weight: bolder;
+        font-size: large;
+    }
+
+    .carousel .carousel-item p {
+        font-family: 'Futura', Arial, sans-serif;
+        font-size: large;
+    }
+    
+    #carouselLabel1 {
+        margin-bottom: 150px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel1:hover {
+        margin-bottom: 150px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel2 {
+        margin-bottom: 165px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        font-size: smaller;
+    }
+    
+    #carouselLabel2:hover {
+        margin-bottom: 165px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel3 {
+        margin-bottom: 165px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel3:hover {
+        margin-bottom: 165px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel4 {
+        margin-bottom: 165px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel4:hover {
+        margin-bottom: 165px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+    
+    #carouselLabel5 {
+        margin-bottom: 175px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    
+    #carouselLabel5:hover {
+        margin-bottom: 175px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.75);
+        border-radius: 5px;
+        background-color: rgb(251, 251, 251, 0.75);
+    }
+}

@@ -1,0 +1,992 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar fixed-top" id ="navbar">
+        <div class="container-fluid">
+          <a href="{% url 'landingPage:show_landingPage' %}">
+            <img src="{% static '/images/logo.jpg' %}" style="width: 200px; height: 50px;" alt="" id="logoImage">
+          </a>
+          <p id="date-info" style="font-family: 'Futura'; font-size: 18px; margin: 15px;"></p>
+        </div>
+      </nav>
+    <div class="wrapper">
+        <form method="POST">
+            {% csrf_token %}
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="text-center mt-0 title">Let's track your health, shall we?</div>
+            <p></p>
+            <div class="d-flex m-3 flex-wrap">
+                <div class="kartu flex-fill feature" style="width: 5rem;">
+                    <img src="https://img.freepik.com/free-vector/tiny-people-choosing-food-ketogenic-diet_74855-7878.jpg?w=1380&t=st=1667328904~exp=1667329504~hmac=e22fe936e95db5850c5ce3f6e2636199e43727ad3194886faa37526d86ca8f5b" class="image" data-toggle="modal" data-target="#modalCalorie">
+                    <div class="card-body" data-toggle="modal" data-target="#modalCalorie">
+                    <h5 class="card-judul fw-bold text-center">Calorie</h5>
+                    <div class="card-isi" id="calorie"></div>
+                    <p></p>
+                    </div>
+                    <button id="feedbackCalorie" class="btn button-custom rounded-pill">Click Me</button>
+                </div>
+                <div class="kartu flex-fill feature" style="width: 5rem;">
+                    <img src="https://img.freepik.com/free-vector/man-moving-clock-arrows-managing-time_74855-10894.jpg?w=1380&t=st=1667328922~exp=1667329522~hmac=cad97d4422d57fe3853e9c9e9fd8bd711a42cb3bb8f2d4a813de84f9c27da8a2" class="image" data-toggle="modal" data-target="#modalSleep">
+                    <div class="card-body" data-toggle="modal" data-target="#modalSleep">
+                    <h5 class="card-judul fw-bold text-center">Sleep</h5>
+                    <div class="card-isi" id="sleep"></div>
+                    <p></p>
+                    </div>
+                    <button id="feedbackSleep" class="btn button-custom rounded-pill">Click Me</button>
+                </div>
+                <div class="kartu flex-fill feature" style="width: 5rem;">
+                    <img src="https://img.freepik.com/free-vector/happy-smiling-couple-running-summer-park_74855-6517.jpg?w=1380&t=st=1667328970~exp=1667329570~hmac=94b236442a08fd1750579caceb23fd6343bd8b5de32a9796a7f05fbcd7b949bb" class="image" data-toggle="modal" data-target="#modalExercise">
+                    <div class="card-body" data-toggle="modal" data-target="#modalExercise">
+                    <h5 class="card-judul fw-bold text-center">Exercise</h5>
+                    <div class="card-isi" id="exercise"></div>
+                    <p></p>
+                    </div>
+                    <button id="feedbackExercise" class="btn button-custom rounded-pill">Click Me</button>
+                </div>
+                <div class="kartu flex-fill feature" style="width: 5rem;">
+                    <img src="https://img.freepik.com/free-vector/tiny-woman-pouring-clean-water-from-faucet-with-mountain-landscape_74855-11024.jpg?w=1380&t=st=1667328863~exp=1667329463~hmac=c098a2f1edc0de2dbab98e6786ee4b471a2cac8c15bb4f3abeb8728f7c2accb5" class="image" data-toggle="modal" data-target="#modalWater">
+                    <div class="card-body" data-toggle="modal" data-target="#modalWater">
+                    <h5 class="card-judul fw-bold text-center">Water</h5>
+                    <div class="card-isi" id="water"></div>
+                    <p></p>
+                    </div>
+                    <button id="feedbackWater" class="btn button-custom rounded-pill">Click Me</button>
+                </div>
+            </div>
+            <div class="modal fade" id="modalCalorie" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Calorie</h4>    
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <input type="number" min="0" name="calorie" placeholder="Calorie in kkal" class="form-control" id="input_calorie" oninput="validity.valid||(value='');">
+                            <p></p>
+                            <input type="text" name="description" placeholder="Description" class="form-control" id="description_calorie">
+                            <p></p>
+                            <button id="addCalorie" class="btn button-custom rounded-pill">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalSleep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Sleep</h4>    
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <label>Bed Time</label> 
+                            <input type="time" id="bedtime" name="bedtime">
+                            <p></p>
+                            <label>Wake-Up Time</label> 
+                            <input type="time" id="waketime" name="waketime">
+                            <p></p>
+                            <input type="text" name="description" placeholder="Description" class="form-control" id="description_sleep">
+                            <p></p>
+                            <button id="addSleep" onclick="sleep()" class="btn button-custom rounded-pill">Add</button>
+                            <p id="GFG"></p>
+                            <p id="FGF"></p>
+                            <p id="hah"></p>
+                            <p id="hoh"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalExercise" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Exercise</h4>    
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <input type="number" min="0" name="exercise" placeholder="Calorie in kkal" class="form-control" id="input_exercise" oninput="validity.valid||(value='');">
+                            <p></p>
+                            <input type="text" name="description" placeholder="Description" class="form-control" id="description_exercise">
+                            <p></p>
+                            <button id="addExercise" class="btn button-custom rounded-pill">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalWater" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Water</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <input type="number" min="0" name="water" placeholder="Water in ml" class="form-control" id="input_water" oninput="validity.valid||(value='');">
+                            <p></p>
+                            <input type="text" name="description" placeholder="Description" class="form-control" id="description_water">
+                            <p></p>
+                            <button id="addWater" class="btn button-custom rounded-pill">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBCalNo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">You'll need energy to challenge life</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <div id="fbCalorieNo"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBCalYes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">I'm so proud of you</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <div id="fbCalorieYes"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBCal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Craving it doesn't mean needing it</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <div id="fbCalorie"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBSleepNo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Honey, what's keeping you up?</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <h4 class="text-center name" id="fbSleepNo"></h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBSleepYes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Loving your sleep schedule!</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <h4 class="text-center name" id="fbSleepYes"></h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBExerciseNo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">It's time to get moving!</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <h4 class="text-center name" id="fbExerciseNo"></h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBExerciseYes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Wow, look at you all toned up!</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <h4 class="text-center name" id="fbExerciseYes"></h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBWaterNo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">This is your cue to drink!</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <h4 class="text-center name" id="fbWaterNo"></h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalFBWaterYes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="text-center name">Way to go, friend!</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body mx-3"> 
+                            <h4 class="text-center name" id="fbWaterYes"></h4> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row no-gutters">
+                    <div id ="calorieCard"></div>
+                    <div id ="sleepCard"></div>
+                    <div id ="exerciseCard"></div>
+                    <div id ="waterCard"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+    function deleteCalorie(){
+        $.get("calorie-json/", function(resp) {
+            for (let i of resp){
+                var date = new Date();
+                x=i.fields.date
+                tanggal = x.slice(8,10)
+                if(tanggal<date.getDate()||(date.getDate()==1 && tanggal !=1)){
+                    $.ajax({
+                        url: "delete-calorie/" + i.pk,
+                        error: function (calorie_item) {
+                            alert("Failed to delete card");
+                        }
+                    });
+                }
+            }
+        })
+    }   
+
+    function deleteWater(){
+        $.get("water-json/", function(resp) {
+            for (let i of resp){
+                var date = new Date();
+                x=i.fields.date
+                tanggal = x.slice(8,10)
+                if(tanggal<date.getDate()||(date.getDate()==1 && tanggal !=1)){
+                    $.ajax({
+                        url: "delete-water/" + i.pk,
+                        error: function (water_item) {
+                            alert("Failed to delete card");
+                        }
+                    });
+                }
+            }
+        })
+    }
+
+    function deleteExercise(){
+        $.get("exercise-json/", function(resp) {
+            for (let i of resp){
+                var date = new Date();
+                x=i.fields.date
+                tanggal = x.slice(8,10)
+                if(tanggal<date.getDate()||(date.getDate()==1 && tanggal !=1)){
+                    $.ajax({
+                        url: "delete-exercise/" + i.pk,
+                        error: function (exercise_item) {
+                            alert("Failed to delete card");
+                        }
+                    });
+                }
+            }
+        })
+    }   
+
+    function deleteSleep(){
+        $.get("sleep-json/", function(resp) {
+            for (let i of resp){
+                var date = new Date();
+                x=i.fields.date
+                tanggal = x.slice(8,10)
+                if(tanggal<date.getDate()||(date.getDate()==1 && tanggal !=1)){
+                    $.ajax({
+                        url: "delete-sleep/" + i.pk,
+                        error: function (sleep_item) {
+                            alert("Failed to delete card");
+                        }
+                    });
+                }
+            }
+        })
+    }   
+
+    function createCalorie(){
+        $('#calorieCard').empty();
+        let data_card = "";
+        $.get("calorie-json/", function(resp) {
+            var calorie = 0
+            for (let i of resp){
+                data_card +=
+                `
+                <div class="card mb-4 card-calorie">
+                    <div class="card-body">
+                        <div class="card-title fw-bold h2">Calorie</div>
+                        <div class="card-text m-1">Calorie: ${i.fields.calorie} kkal</div>
+                        <div class="card-text m-1">Description: ${i.fields.description}</div>
+                        <div class="card-subtitle m-1">${i.fields.time}</div>
+                        <a href="delete-calorie/${i.pk}" class="btn button-custom rounded-pill">Delete</a>
+                    </div>
+                </div>
+                `;
+                calorie += i.fields.calorie
+                document.getElementById('calorie').innerText = calorie +' kkal'
+            }
+            $('#calorieCard').append(data_card);
+        })
+    }
+
+    function feedbackCalorie(){
+        $('#fbCalorieYes').empty();
+        $('#fbCalorieNo').empty();
+        let data_card = "";
+        let text = document.getElementById('calorie').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k < 2000) {
+            var x = 2000 - k;
+            data_card += 
+            `<h6 class="text-center name">${x} kkal to go! Remember, healthy eating is a bank account. Good foods are good investments!</h6>`;
+            $('#fbCalorieNo').append(data_card);
+        }
+        else if (k == 2000) {
+            data_card += 
+            `<h6 class="text-center name">Great job! Love the investment! Now, look in the mirror and say that to yourself, will you?</h6>`;
+            $('#fbCalorieYes').append(data_card);
+        }
+        else {
+            data_card += 
+            `<h6 class="text-center name">Now that you've exceeded the limit, it's time to work out!</h6>`;
+            $('#fbCalorie').append(data_card);
+        }
+    }
+
+    $('#feedbackCalorie').click(function(e){
+        e.preventDefault();
+        feedbackCalorie();
+        let text = document.getElementById('calorie').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k < 2000) {
+            $('#modalFBCalNo').modal('show');
+        }
+        else if (k == 2000) {
+            $('#modalFBCalYes').modal('show');
+        }
+        else {
+            $('#modalFBCal').modal('show');
+        }
+    })
+
+    function createWater(){
+        $('#waterCard').empty();
+        let data_card = "";
+        $.get("water-json/", function(resp) {
+            var water = 0
+            for (let i of resp){
+                data_card +=
+                `
+                <div class="card mb-4 card-calorie">
+                    <div class="card-body">
+                        <div class="card-title fw-bold h2">Water</div>
+                        <div class="card-text m-1">Water: ${i.fields.water} ml</div>
+                        <div class="card-text m-1">Description: ${i.fields.description}</div>
+                        <div class="card-subtitle m-1">${i.fields.time}</div>
+                        <a href="delete-water/${i.pk}"  class="btn button-custom rounded-pill">Delete</a>
+                    </div>
+                </div>
+                `;
+                water += i.fields.water
+                document.getElementById('water').innerText = water + ' ml'
+            }
+            $('#waterCard').append(data_card);
+        })
+    }      
+
+    function feedbackWater(){
+        $('#fbWaterYes').empty();
+        $('#fbWaterNo').empty();
+        let data_card = "";
+        let text = document.getElementById('water').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k < 2000) {
+            var x = 2000 - k;
+            data_card += 
+            `<h6 class="text-center name">${x} ml to go! Don't forget to drink your water and get some sun. We're basically a houseplant with more complicated emotions.</h6>`;
+            $('#fbWaterNo').append(data_card);
+        }
+        else {
+            data_card += 
+            `<h6 class="text-center name">You did it! Bet you feel healthy inside out right now. Yup, that's definitely the magic of water. Keep it up!</h6>`;
+            $('#fbWaterYes').append(data_card);
+        }
+    }
+
+    $('#feedbackWater').click(function(e){
+        e.preventDefault();
+        feedbackWater();
+        let text = document.getElementById('water').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k < 2000) {
+            $('#modalFBWaterNo').modal('show');
+        }
+        else {
+            $('#modalFBWaterYes').modal('show');
+        }
+    })
+
+    function createExercise(){
+        $('#exerciseCard').empty();
+        let data_card = "";
+        $.get("exercise-json/", function(resp) {
+            var exercise = 0
+            for (let i of resp){
+                data_card +=
+                `
+                <div class="card mb-4 card-calorie">
+                    <div class="card-body">
+                        <div class="card-title fw-bold h2">Exercise</div>
+                        <div class="card-text m-1">Calorie: ${i.fields.exercise} kkal</div>
+                        <div class="card-text m-1">Description: ${i.fields.description}</div>
+                        <div class="card-subtitle m-1">${i.fields.time}</div>
+                        <a href="delete-exercise/${i.pk}"  class="btn button-custom rounded-pill">Delete</a>
+                    </div>
+                </div>
+                `;
+                exercise += i.fields.exercise
+                document.getElementById('exercise').innerText = exercise + ' kkal'
+            }
+            $('#exerciseCard').append(data_card);
+        })
+    }   
+
+    function feedbackExercise(){
+        $('#fbExerciseYes').empty();
+        $('#fbExerciseNo').empty();
+        let data_card = "";
+        let text = document.getElementById('exercise').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k == 0) {
+            data_card += 
+            `<h6 class="text-center name">It took more than a day to put it on. It will take more than a day to take it off. So, you better start now!</h6>`;
+            $('#fbExerciseNo').append(data_card);
+        }
+        else {
+            data_card += 
+            `<h6 class="text-center name">Small steps make big changes. By the way, you look exceptionally attractive after working out and that's on period.</h6>`;
+            $('#fbExerciseYes').append(data_card);
+        }
+    }
+
+    $('#feedbackExercise').click(function(e){
+        e.preventDefault();
+        feedbackExercise();
+        let text = document.getElementById('exercise').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k == 0) {
+            $('#modalFBExerciseNo').modal('show');
+        }
+        else {
+            $('#modalFBExerciseYes').modal('show');
+        }
+    })
+
+    function sleep(){
+        var bedtime = document.getElementById("bedtime").value;
+        var waketime = document.getElementById("waketime").value;
+        document.getElementById("GFG").innerHTML = bedtime.toString();
+        document.getElementById("FGF").innerHTML = waketime.toString();
+        let x = document.getElementById("GFG").innerHTML;
+        let y = document.getElementById("FGF").innerHTML;
+        const arr = x.split(":");
+        let a = parseInt(arr[0]);
+        let b = parseInt(arr[1]);
+        const rar = y.split(":");
+        let c = parseInt(rar[0]);
+        let d = parseInt(rar[1]);
+        let j = (c*60)+d;
+        let k = (a*60)+b;
+        let z = j - k;
+        let i = 0;
+        let hours = 0;
+        let minutes = 0;
+        if(z < 0) {
+            i = 1440 + z;
+            hours = parseInt(i/60);
+            minutes = i%60;
+        }
+        else{
+            hours = parseInt(z/60);
+            minutes = z%60;
+        }
+        document.getElementById("hah").innerHTML = hours;
+        document.getElementById("hoh").innerHTML = minutes;
+    }
+
+    function createSleep() {
+        $('#sleepCard').empty();
+        let data_card = "";
+        $.get("sleep-json/", function(resp) {
+            var sleephours = 0;
+            var sleepminutes = 0;
+            for (let i of resp){
+                data_card +=
+                `
+                <div class="card mb-4 card-calorie">
+                    <div class="card-body">
+                        <div class="card-title fw-bold h2">Sleep</div>
+                        <div class="card-text m-1">Sleep: ${i.fields.sleephours} hours ${i.fields.sleepminutes} minutes</div>
+                        <div class="card-text m-1">Description: ${i.fields.description}</div>
+                        <div class="card-subtitle m-1">${i.fields.time}</div>
+                        <a href="delete-sleep/${i.pk}"  class="btn button-custom rounded-pill">Delete</a>
+                    </div>
+                </div>
+                `;
+                sleep();
+                sleephours += i.fields.sleephours;
+                sleepminutes += i.fields.sleepminutes;
+                if (sleepminutes == 60) {
+                    sleepminutes = 0;
+                    sleephours += 1;
+                }
+                document.getElementById('sleep').innerText = sleephours + ' hours ' + sleepminutes + ' minutes'
+            }
+            $('#sleepCard').append(data_card);
+        })
+    }
+
+    function feedbackSleep(){
+        $('#fbSleepYes').empty();
+        $('#fbSleepNo').empty();
+        let data_card = "";
+        let text = document.getElementById('sleep').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k < 7) {
+            data_card += 
+            `<h6 class="text-center name">There are no excuses for rest. Even owls sleep for 10-12 hours. Come on, you can continue tomorrow!</h6>`;
+            $('#fbSleepNo').append(data_card);
+        }
+        else {
+            data_card += 
+            `<h6 class="text-center name">Don't you just feel great and ready for the day? I hope today's another good one for you!</h6>`;
+            $('#fbSleepYes').append(data_card);
+        }
+    }
+
+    $('#feedbackSleep').click(function(e){
+        e.preventDefault();
+        feedbackSleep();
+        let text = document.getElementById('sleep').innerText;
+        const arr = text.split(" ");
+        let k = parseInt(arr[0]);
+        if(k < 7) {
+            $('#modalFBSleepNo').modal('show');
+        }
+        else {
+            $('#modalFBSleepYes').modal('show');
+        }
+    })
+     
+    $(document).ready(function(){
+        var date = new Date();
+        document.getElementById('date-info').innerText = date.toDateString();
+        document.getElementById('calorie').innerText = 0 + ' kkal';
+        document.getElementById('water').innerText = 0 + ' ml';
+        document.getElementById('exercise').innerText = 0 + ' kkal';
+        document.getElementById('sleep').innerText = 0 + ' minutes';
+        createCalorie();
+        createWater();
+        createExercise();
+        createSleep();
+        $("#addCalorie").click(function(e){
+            var calorie = $("#input_calorie").val();
+            var description = $("#description_calorie").val();
+            var date = new Date();
+            var hours = date.getHours();  
+            var minutes = "0" + date.getMinutes();
+            time =  hours + ':' + minutes.substr(-2);
+            $.post("add-calorie/",
+            {
+                calorie,
+                description,
+                time,
+                date,
+            },
+            function(calorie_item, status){
+                console.log("test");
+                createCalorie();
+                $("#description_calorie").val("");
+                $("#input_calorie").val("");
+            });
+        });
+        $("#addWater").click(function(e){
+            var water = $("#input_water").val();
+            var description = $("#description_water").val();
+            var date = new Date();
+            var hours = date.getHours();  
+            var minutes = "0" + date.getMinutes();
+            time =  hours + ':' + minutes.substr(-2);
+            $.post("add-water/",
+            {
+                water,
+                description,
+                time,
+                date,
+            },
+            function(water_item, status){
+                console.log("test");
+                createWater();
+                $("#description_water").val("");
+                $("#input_water").val("");
+            });
+        });
+        $("#addExercise").click(function(e){
+            var exercise = $("#input_exercise").val();
+            var description = $("#description_exercise").val();
+            var date = new Date();
+            var hours = date.getHours();  
+            var minutes = "0" + date.getMinutes();
+            time =  hours + ':' + minutes.substr(-2);
+            $.post("add-exercise/",
+            {
+                exercise,
+                description,
+                time,
+                date,
+            },
+            function(exercise_item, status){
+                console.log("test");
+                createExercise();
+                $("#description_exercise").val("");
+                $("#input_exercise").val("");
+            });
+        });
+        $("#addSleep").click(function(e){
+            sleep();
+            var sleephours = document.getElementById("hah").innerHTML;
+            var sleepminutes = document.getElementById("hoh").innerHTML;
+            var description = $("#description_sleep").val();
+            var date = new Date();
+            var hours = date.getHours();  
+            var minutes = "0" + date.getMinutes();
+            time =  hours + ':' + minutes.substr(-2);
+            $.post("add-sleep/",
+            {
+                sleephours,
+                sleepminutes,
+                description,
+                time,
+                date,
+            },
+            function(sleep_item, status){
+                console.log("test")
+                createSleep();
+                $("#description_sleep").val("");
+                $("#bedtime").val("");
+                $("#waketime").val("");
+            });
+        });
+    });
+</script>
+
+<style>
+    :root {
+        --red: #ef233c;
+        --darkred: #c00424;
+        --platinum: #e5e5e5;
+        --black: #2b2d42;
+        --white: #fff;
+        --thumb: #edf2f4;
+        --custom: #264655;
+    }
+    
+    * {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    vertical-align: middle; 
+    color: #264655;
+    }
+    
+    body {
+        background-color: rgb(219, 232, 246);
+    } 
+    
+    .navbar {
+        background-color: white;
+        height: 75px; 
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    }
+    
+    .navbar h5 {
+        font-family: 'Futura', Arial, sans-serif;
+        font-weight: bolder;
+    }
+    
+    .titleLogo{
+        transform: translate(-307px,0);
+    }
+    
+    .subtitleLogo{
+        transform:translate(-733px,10px);
+        font-size: 7.5px;
+    }
+    
+    .btn {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        width: 100%;
+        height: 40px;
+        background-color: white;
+        border-radius: 5px;
+        transition: 0.3s;
+        border-color: #264655;
+    }
+    
+    .btn:hover {
+        background-color: white;
+        border-radius: 2px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+    
+    .container {
+        max-width: 1400px;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+
+    .wrapper .title {
+        font-weight: 600;
+        font-size: 2.1rem;
+        margin: 20px auto;
+        color: #264655;
+    }
+
+    .kartu {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 100%;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 20px 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+        scroll-snap-align: 0;
+        transition: all 0.3s;
+        background-color: white;
+    }
+
+    .kartu:hover {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 50%);
+        background-color: white;
+    }
+
+    .image {
+        margin: 0px 20px 20px;
+        object-fit:contain;
+        width:200px;
+        height:150px;
+    }
+
+    .cards {
+        display: flex;
+        padding: 25px 15px 25px 15px;
+        list-style: none;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        background-color: rgb(219, 232, 246);
+        border-radius: 5px;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 100%;
+        padding: 20px;
+        margin: 20px 10px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+        scroll-snap-align: 0;
+        transition: all 0.3s;
+        background-image: url(https://img.freepik.com/free-vector/cute-gird-background-minimal-pink-design-vector_53876-156576.jpg?w=996&t=st=1667224166~exp=1667224766~hmac=3442bd0cd1f81f87c14ee53b2eeaa1333bda4b3197319ed73c22616b7379f820);
+    }
+
+    .card:not(:last-child) {
+        margin-right: 10px;
+    }
+    
+    .card:hover {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 50%);
+        background-image: url(https://img.freepik.com/free-vector/cute-gird-background-minimal-pink-design-vector_53876-156576.jpg?w=996&t=st=1667224166~exp=1667224766~hmac=3442bd0cd1f81f87c14ee53b2eeaa1333bda4b3197319ed73c22616b7379f820);
+    }
+    
+    .card .card-title {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .card .card-judul {
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    #GFG {
+        display: none;
+    }
+    #FGF {
+        display: none;
+    }
+    #hah {
+        display: none;
+    }
+    #hoh {
+        display: none;
+    }
+    .card .card-subtitle {
+        font-size: 14px;
+        text-align: right;
+    }
+    
+    .card .card-isi {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .card .card-content {
+        font-size: 14px;
+        text-align: left;
+    }
+    
+    .card .card-link-wrapper {
+        margin-top: auto;
+    }
+    
+    .cards::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .cards::-webkit-scrollbar-thumb,
+    .cards::-webkit-scrollbar-track {
+        border-radius: 64px;
+    }
+    
+    .cards::-webkit-scrollbar-thumb {
+        background: var(--custom);
+    }
+    
+    .cards::-webkit-scrollbar-track {
+        background: var(--thumb);
+    }
+    
+    @media (min-width: 500px) {
+        .card {
+        flex-basis: calc(50% - 10px);
+        }
+    
+        .card:not(:last-child) {
+        margin-right: 20px;
+        }
+    }
+    
+    @media (min-width: 700px) {
+        .card {
+        flex-basis: calc(calc(100% / 3) - 20px);
+        }
+    
+        .card:not(:last-child) {
+        margin-right: 30px;
+        }
+    }
+    
+    @media (min-width: 1100px) {
+        .card {
+        flex-basis: calc(25% - 30px);
+        }
+    
+        .card:not(:last-child) {
+        margin-right: 40px;
+        }
+    }
+</style>

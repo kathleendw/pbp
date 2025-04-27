@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+{% include 'htmlFAQConfiguration.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/showFAQSearchHistory.css' %}">
+
+<title>Search History - FAQ</title>
+{% endblock meta %}
+
+
+{% block content %}
+<!-- show navbar -->
+{% include 'navbar.html' %}
+
+<div class="container bg-white rounded shadow mt-5" >
+    <div class="row">
+        <div class="col-md-12">
+            <div class="h2 text-center fw-bold" id="search_history">Search History</div> 
+            <button type="button" class="btn btn-warning mb-5" >
+                <a href="{% url 'partFAQ:deleteFAQSearchHistory' %}">Delete Search History</a>
+            </button>
+            {% for search in data reversed%}
+                <p class="text-center fw-bold">{{search.search}}</p> 
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

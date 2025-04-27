@@ -1,0 +1,251 @@
+{% load static %}
+
+{% block meta %}
+  <title>NUTRIROBO</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="{% static '/css/landingPage.css' %}">
+  {% if user.is_authenticated %}
+    <link rel="stylesheet" href="{% static '/css/afterLoginLandingPage.css' %}">
+  {% else %}  
+    <link rel="stylesheet" href="{% static '/css/landingPage.css' %}">
+  {% endif %}
+  <script src="{% static '/js/landingPage.js' %}"></script>
+{% endblock meta %}
+
+{% block content %}
+
+<body style="background-color: rgb(219, 232, 246);">
+  {% if user.is_authenticated %}
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-top" id ="navbar">
+      <div class="container-fluid">
+        <a href="{% url 'landingPage:show_landingPage' %}">
+          <img src="{% static '/images/logo.jpg' %}" alt="" id="logoImage">
+        </a>
+        <span class = "modalButton">
+          <button type="button" class="navbarButton">
+            <a href="{% url 'landingPage:logout_user' %}" style="text-decoration: none; color: #264655;">
+              SIGN OUT
+            </a>
+          </button>
+          <!-- Button trigger modal -->
+          <button type="button" class="navbarButton" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+            ADD FEEDBACK
+          </button>
+        </span>
+      </div>
+    </nav>
+
+    <h6 class="text-muted cookiesText">last login: {{last_login}}</h6>
+  {% else %}
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-top" id ="navbar">
+      <div class="container-fluid">
+        <a href="{% url 'landingPage:show_landingPage' %}">
+          <img src="{% static '/images/logo.jpg' %}" alt="" id="logoImage">
+        </a>
+        <span class = "modalButton">
+          <button type="button" class="navbarButton">
+            <a href="{% url 'landingPage:login_user' %}" style="text-decoration: none; color: #264655;">SIGN IN</a>
+          </button>
+          <button type="button" class="navbarButton">
+            <a href="{% url 'landingPage:register' %}" style="text-decoration: none; color: #264655;">SIGN UP</a>
+          </button>
+        </span>
+      </div>
+    </nav>
+  {% endif %}
+  <!-- Navigation Bar -->
+
+  {% if user.is_authenticated %}
+    <!-- Carousel -->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="{% static '/images/nutriroboImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'landingPage:show_landingPage' %}">
+            <div class="carousel-caption" id ="carouselLabel1">
+              <h5>HELLO NUTRI-ROBO!</h5>
+              <p>"NUTRI-ROBO is a smart application that will help users to improve the quality of global public health by fulfilling the daily nutritional needs of users. It does not stop there, NUTRI-ROBO will also provide recommendations regarding exercise, sleep time, daily motivation, and feedback related to food and daily activities of the user in accordance with the personal data of each user."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static '/images/trackerImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'tracker:show_tracker' %}"> <!-- 'tracker:show_tracker' -->
+            <div class="carousel-caption" id ="carouselLabel2">
+              <h5>TRACKER</h5>
+              <p>"Should you need any assistance in tracking your health, we are always at your service to help you get on track."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static '/images/targetHealthImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'target_profile:profile' %}"> <!-- 'user_profile:user_profile' -->
+            <div class="carousel-caption" id ="carouselLabel3">
+              <h5>TARGET HEALTH</h5>
+              <p>"Record changes of your health data here, nutri-robo is ready to be your personal assistant to recommend the best health targets according to your physical condition."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static '/images/blogImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'landingPage:frontpage' %}"> 
+            <div class="carousel-caption" id ="carouselLabel4">
+              <h5>BLOG</h5>
+              <p>"Find everything you need about health advice and daily motivation here. Better advice, better health."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static '/images/faqImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'partFAQ:mainPageFAQ' %}"> <!-- 'partFAQ:FAQ' -->
+            <div class="carousel-caption" id ="carouselLabel5">
+              <h5>FAQ</h5>
+              <p>"Here you can find answers to the most frequently asked questions. "</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  {% else %}
+    <!-- Carousel -->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="{% static '/images/nutriroboImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'landingPage:show_landingPage' %}">
+            <div class="carousel-caption" id ="carouselLabel1">
+              <h5>HELLO NUTRI-ROBO!</h5>
+              <p>"In order to help the world, you must help yourself first. Nutri-robo is ready to be a friend and a helping hand for you to improve your health."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static '/images/trackerImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'tracker:show_tracker' %}">
+            <div class="carousel-caption" id ="carouselLabel2">
+              <h5>TRACKER</h5>
+              <p>"Should you need any assistance in tracking your health, we are always at your service to help you get on track."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static '/images/targetHealthImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'target_profile:profile_coru' %}"> <!-- 'user_profile:user_profile' -->
+            <div class="carousel-caption" id ="carouselLabel3">
+              <h5>TARGET HEALTH</h5>
+              <p>"Record changes of your health data here, nutri-robo is ready to be your personal assistant to recommend the best health targets according to your physical condition."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static '/images/blogImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'landingPage:frontpage' %}"> 
+            <div class="carousel-caption" id ="carouselLabel4">
+              <h5>BLOG</h5>
+              <p>"Find everything you need about health advice and daily motivation here. Better advice, better health."</p>
+            </div>
+          </a>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static '/images/faqImage.jpg' %}" class="d-block w-100" alt="...">
+          <a href="{% url 'partFAQ:mainPageFAQ' %}"> <!-- 'partFAQ:FAQ' -->
+            <div class="carousel-caption" id ="carouselLabel5">
+              <h5>FAQ</h5>
+              <p>"Here you can find answers to the most frequently asked questions. "</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  {% endif %}
+
+
+  <!-- cardContainer for all feedback -->
+  <div class="container">
+    <h3>
+      Here's what people say about nutri-robo
+    </h3>
+    <ul class="cards" id="allFeedback">
+    </ul>
+  </div>
+
+  {% if user.is_authenticated %}
+    <!-- cardContainer for user feedback -->
+  <div class="container">
+    <h3>
+      Here's what {{request.user}} say about nutri-robo
+    </h3>
+    <ul class="cards" id ="userFeedback">
+    </ul>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Feedback</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="addFeedback" method="POST">
+              {% csrf_token %}
+              <div>
+                <label>Rating</label>
+                {{form.rating}}
+              </div>
+              <br>
+              <div>
+                <label>Feedback</label>
+                {{form.feedback}}
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="addFeedback()">Add Feedback</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endif %}
+
+</body>
+
+  
+
+{% endblock content %}

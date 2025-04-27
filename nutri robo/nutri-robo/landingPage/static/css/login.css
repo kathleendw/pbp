@@ -1,0 +1,140 @@
+* {
+    font-family: 'Futura', Arial, sans-serif;
+    text-align: center;
+    vertical-align: middle; 
+    color: #264655;
+}
+
+
+body {
+    min-height: 100%;
+}
+
+.navbar {
+    background-color: white;
+    height: 75px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+
+button {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+
+table {
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    font-family: "Raleway", sans-serif;
+    font-size: 11pt;
+}
+
+#card {
+    background: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 410px;
+    margin: 6rem auto 10px auto;
+    width: 329px;
+}
+
+#card-content {
+    padding: 12px 44px;
+}
+
+#card-title {
+    font-family: "Raleway", sans-serif;
+    letter-spacing: 4px;
+    padding-bottom: 23px;
+    padding-top: 13px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#submit-btn {
+    background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+    border: none;
+    border-radius: 21px;
+    box-shadow: 0px 1px 8px #24c64f;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway SemiBold", sans-serif;
+    height: 42.3px;
+    margin: 0 auto;
+    margin-top: 50px;
+    transition: 0.25s;
+    width: 153px;
+    margin-bottom: 10px;
+}
+
+#submit-btn:hover {
+    box-shadow: 0px 1px 18px #24c64f;
+}
+
+.form {
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-border {
+    background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+    height: 1px;
+    width: 100%;
+    margin-top: 7px;
+}
+
+.form-content {
+    background: #fbfbfb;
+    border: none;
+    outline: none;
+    padding-top: 14px;
+}
+
+.underline-title {
+    background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+    height: 2px;
+    margin: 5px auto 0 auto;
+    width: 89px;
+}
+
+.message {
+    transform: translate(0, 10px);
+    font-family: 'Futura', Arial, sans-serif;
+}
+
+@media (min-width: 300px) {
+    #logoImage {
+        width: 150px;
+        height: 35px;
+    }
+
+    .navbar button {
+        font-size: small;
+    }
+}
+
+@media (min-width: 500px) {
+    #logoImage {
+        width: 225px;
+        height: 55px;
+    }
+
+    .navbar button {
+        font-size: medium;
+    }
+}

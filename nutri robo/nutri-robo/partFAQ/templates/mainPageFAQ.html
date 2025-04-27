@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+{% include 'htmlFAQConfiguration.html' %}
+<title>FAQ</title>
+
+{% load static %}
+<script src="{% static 'javascript/mainPageFAQ.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/mainPageFAQ.css' %}">
+
+{% endblock meta %}
+
+{% block content %}
+<!-- show navbar -->
+{% include 'navbar.html' %}
+
+<div class="container bg-white rounded shadow mt-5" >
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class="h2 text-center fw-bold " id="title_main_page">Frequently Asked Question</div> 
+
+            <!-- menampilkan search bar -->
+            <div class="input-group mb-3">
+                <input class="form-control form-control-lg" type="text" id="search_bar" placeholder="Search for questions..">
+                <button type="button" class="btn btn-secondary" id = "submit_search" >Search</button>
+            </div>
+            
+
+            <!-- meanmpilkan history search -->
+            <p><a href="{% url 'partFAQ:showFAQSearchHistory' %}">See search history</a></p>
+
+            <!-- menampilkan daftar-daftar FAQ -->
+
+            <div id="show_question">
+
+            </div>
+
+            <br></br>
+        </div>
+    </div>
+</div>
+
+
+<!--Make sure the form has the autocomplete function switched off:-->
+<!-- <form autocomplete="off" action="/action_page.php">
+    <div class="autocomplete" style="width:300px;">
+      <input id="myInput" type="text" name="myCountry" placeholder="Country">
+    </div>
+    <input type="submit">
+</form> -->
+
+
+
+{% endblock content %}
+
+

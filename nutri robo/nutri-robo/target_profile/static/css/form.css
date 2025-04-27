@@ -1,0 +1,123 @@
+:root {
+    --red: #ef233c;
+    --darkred: #c00424;
+    --platinum: #e5e5e5;
+    --black: #2b2d42;
+    --white: #fff;
+    --thumb: #edf2f4;
+    --custom: #264655;
+}
+
+/* * {
+    font-family: 'Futura', Arial, sans-serif;
+    text-align: center;
+    vertical-align: middle; 
+    color: #264655;
+} */
+
+.navbar {
+    background-color: white;
+    height: 75px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+
+.navbarButton {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.navbarButton:hover {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.top {
+    width: 1000px;
+    padding: 10px;
+    margin-top: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1400px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+@media (min-width: 300px) {
+    .top {
+        width: 100%;
+    }
+
+    #logoImage {
+        width: 150px;
+        height: 35px;
+    }
+
+    .navbarButton {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+        font-size: x-small;
+    }
+    
+    .navbarButton:hover {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+}
+
+@media (min-width: 500px) {
+    .top {
+        width: 100%;
+    }
+
+    #logoImage {
+        width: 225px;
+        height: 55px;
+    }
+
+    .navbarButton {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+        font-size: small;
+    }
+    
+    .navbarButton:hover {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+}
+
+@media (min-width: 700px) {
+    .top {
+        width: 600px;
+    }
+
+    .navbarButton {
+        font-size: medium;
+    }
+}
+
+@media (min-width: 1100px) {
+    .top {
+        width: 900px;
+    }
+}

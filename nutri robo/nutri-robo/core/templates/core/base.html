@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf=8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}Nutrirobo</title>
+        <!-- Bulma Version 0.9.0-->
+        <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css" />
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <!-- Static files -->
+        <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+        <script type="text/javascript" src="{% static '/js/blog.js' %}"></script>
+    </head>
+
+    <body>
+        <!-- START MENU -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <img src="{% static '/images/nutrirobo_logo.jpg' %}" alt="" id="logoImage">
+                    </a>
+                    <span class="navbar-burger burger" data-target="navbarMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                    </span>
+                </div>
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end has-text-weight-bold">
+                        <a href='/blog' class="navbar-item is-active">
+                                Blog
+                            </a>
+                        <a href='/blog/about' class="navbar-item">
+                                About
+                            </a>
+                        
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link" href="#">
+                                    Our Apps
+                                </a>
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="#">
+                                        Profile
+                                    </a>
+                                <a class="navbar-item" href="/tracker/">
+                                        Tracker
+                                    </a>
+                                <a class="navbar-item" href="/FAQ">
+                                        FAQ
+                                    </a>
+                            </div>
+                        </div>
+                        {% if user.is_authenticated %}
+                        <a href='/logout' class="navbar-item has-text-danger">
+                            Logout
+                        </a>
+                        {% else %}
+                        <a href='/login' class="navbar-item has-text-info">
+                            Login
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- END MENU -->
+
+        <!-- BLOCK CONTENT -->
+        {% block content %}
+        {% endblock %}
+        <!-- END BLOCK CONTENT -->
+
+        <!-- START FOOTER -->
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>Copyright &copy; 2022 Nutri-robo.</p>
+            </div>
+        </footer>
+        <!-- END FOOTER -->
+
+        <!-- Alternative to js file from static -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                //The first argument are the elements to which the plugin shall be initialized
+                //The second argument has to be at least a empty object or a object with your desired options
+                OverlayScrollbars(document.querySelectorAll("body"), { });
+                });
+            
+                // The following code is based off a toggle menu by @Bradcomp
+                // source: https://gist.github.com/Bradcomp/a9ef2ef322a8e8017443b626208999c1
+                (function() {
+                    var burger = document.querySelector('.burger');
+                    var menu = document.querySelector('#'+burger.dataset.target);
+                    burger.addEventListener('click', function() {
+                        burger.classList.toggle('is-active');
+                        menu.classList.toggle('is-active');
+                    });
+                })();
+        </script>
+    </body>
+</html>

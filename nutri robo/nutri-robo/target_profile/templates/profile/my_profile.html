@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4 align-items-top justify-content-center">
+    <div class="col-md-4">
+        <div class="row m-1">
+            <div class="col border border-dark rounded p-2">
+                <h2>Your Profile <i class="bi bi-person h2"></i></h2>
+                <h3>
+                    @{{ request.user.username }} 
+                    {% if profile.role == "2" %}<i class="bi bi-check-circle text-success"></i>{% endif %}
+                </h3>
+                <div class="border p-2 border-secondary">
+                    <div class="row mb-3">
+                        <label for="nama" class="col col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{ profile.name }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="phone" class="col col-form-label">Phone</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{ profile.phone }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="email" class="col col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{ profile.email }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="role" class="col col-form-label">Role</label>
+                        <div class="col-sm-8">
+                            <input type="text" value="{{ profile.get_role_display }}" class="form-control">
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary modalShow mb-4" data-url="{% url 'target_profile:profile_coru' %}">EDIT PROFILE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if profile %}
+    <div class="col-md-7 col-sm-12">
+        <div class="row m-1">
+                
+                <div class="col border border-dark rounded p-2">
+                    <h2>
+                        Your Target <i class="bi bi-option"></i> <button class="btn btn-secondary modalShow" data-url="{% url 'target_profile:target_coru' %}">ADD TARGET</button>
+                    </h2>
+                    
+                    <div class="border border-secondary p-2">
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                My Weight
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9"><input type="text" class="form-control" value="{{ target.weight }}"></div>
+                                    <div class="col">Kg</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                My Height
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" value="{{ target.height }}">
+                                    </div>
+                                    <div class="col">Cm</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                My Age
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" value="{{ target.age }}">
+                                    </div>
+                                    <div class="col">Years</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                My Gender
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" value="{{ target.get_gender_display }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                Calories
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" value="{{ target.calories }}">
+                                    </div>
+                                    <div class="col">Cal/day</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                Water
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" value="{{ target.water }}">
+                                    </div>
+                                    <div class="col">Ml/day</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                Exercise
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" value="{{ target.exercise }}">
+                                    </div>
+                                    <div class="col">Minutes/day</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="field.id_for_label text-left" class="col-sm-3 col-form-label">
+                                Sleep Time
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" value="{{ target.sleep }}">
+                                    </div>
+                                    <div class="col">Hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extrajs %}
+<div div class="modal fade" id="myModal" aria-hidden="true" aria-labelledby="#myModalLabel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="d-flex justify-content-center m-4">
+                <div class="spinner-border text-primary" style="width: 13rem; height: 13rem;" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

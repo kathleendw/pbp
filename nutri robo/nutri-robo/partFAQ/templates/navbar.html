@@ -1,0 +1,28 @@
+<!-- Navigation Bar -->
+<nav class="navbar bg-success navbar-expand-sm ">
+    <div class="container-fluid">
+        <h1 class="navbar-brand"><b>NUTRI-ROBO</b></h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" color="green"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'landingPage:show_landingPage' %}">Home</a>
+                </li>
+          
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'tracker:show_tracker' %}">Tracker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'partFAQ:mainPageFAQ' %}">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'landingPage:logout_user' %}">Logout</a>
+                </li> 
+            </ul>
+        </div>
+        
+    </div>
+</nav>

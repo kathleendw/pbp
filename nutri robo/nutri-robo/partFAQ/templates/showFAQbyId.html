@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block meta %}
+{% include 'htmlFAQConfiguration.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/mainPageFAQ.css' %}">
+
+<title>FAQ</title>
+{% endblock meta %}
+
+{% block content %}
+<!-- show navbar -->
+{% include 'navbar.html' %}
+
+
+<div class="container bg-white rounded shadow mt-5" >
+    <div class="row">
+        <div class="col-md-12">
+            <div class="h2 text-center fw-bold" id="title_main_page">Frequently Asked Question</div> 
+
+            <!-- menampilkan pertanyaan dan jawaban -->
+            <div class="h1 text-center fw-bold">{{faq.question}}</div> 
+            <p >{{faq.answer}}</p> 
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

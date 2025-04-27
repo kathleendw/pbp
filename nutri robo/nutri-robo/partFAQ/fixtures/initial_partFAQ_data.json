@@ -1,0 +1,18 @@
+[
+    {
+        "model":"partFAQ.FAQContent",
+        "pk":1,
+        "fields":{
+            "question":"What is the difference between a part and a component?",
+            "answer":"A part is a physical object that can be purchased and installed in a vehicle. A component is a group of parts that are used together to perform a specific function. For example, the brake system is a component that consists of the brake pads, rotors, calipers, and brake lines. The brake pads are a part of the brake system."
+        }
+    },
+    {
+        "model":"partFAQ.FAQContent",
+        "pk":2,
+        "fields":{
+            "question":"question2",
+            "answer":"answer2"
+        }
+    }
+]

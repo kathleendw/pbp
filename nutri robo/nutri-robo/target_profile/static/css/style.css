@@ -1,0 +1,211 @@
+:root {
+    --red: #ef233c;
+    --darkred: #c00424;
+    --platinum: #e5e5e5;
+    --black: #2b2d42;
+    --white: #fff;
+    --thumb: #edf2f4;
+    --custom: #264655;
+}
+
+* {
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+text-align: center;
+vertical-align: middle; 
+color: #264655;
+}
+
+body {
+    background-color: rgb(219, 232, 246);
+} 
+
+.navbar {
+    background-color: white;
+    height: 75px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+
+.navbar h5 {
+    font-family: 'Futura', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.titleLogo{
+    transform: translate(-307px,0);
+}
+
+.subtitleLogo{
+    transform:translate(-733px,10px);
+    font-size: 7.5px;
+}
+
+.btn {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+    border-color: #264655;
+}
+
+.btn:hover {
+    background-color: white;
+    border-radius: 2px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.wrapper .title {
+    font-weight: 600;
+    font-size: 2.1rem;
+    margin: 20px auto;
+    color: #264655;
+}
+
+.kartu {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    scroll-snap-align: 0;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+.kartu:hover {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 50%);
+    background-color: white;
+}
+
+.image {
+    margin: 0px 20px 20px;
+    object-fit:contain;
+    width:200px;
+    height:150px;
+}
+
+.cards {
+    display: flex;
+    padding: 25px 15px 25px 15px;
+    list-style: none;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    background-color: rgb(219, 232, 246);
+    border-radius: 5px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    padding: 20px;
+    margin: 20px 10px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+    scroll-snap-align: 0;
+    transition: all 0.3s;
+    background-image: url(https://img.freepik.com/free-vector/cute-gird-background-minimal-pink-design-vector_53876-156576.jpg?w=996&t=st=1667224166~exp=1667224766~hmac=3442bd0cd1f81f87c14ee53b2eeaa1333bda4b3197319ed73c22616b7379f820);
+}
+
+.card:not(:last-child) {
+    margin-right: 10px;
+}
+
+.card:hover {
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 50%);
+    background-image: url(https://img.freepik.com/free-vector/cute-gird-background-minimal-pink-design-vector_53876-156576.jpg?w=996&t=st=1667224166~exp=1667224766~hmac=3442bd0cd1f81f87c14ee53b2eeaa1333bda4b3197319ed73c22616b7379f820);
+}
+
+.card .card-title {
+    font-size: 20px;
+    text-align: left;
+}
+
+.card .card-judul {
+    font-size: 25px;
+    text-align: center;
+}
+
+#GFG {
+    display: none;
+}
+#FGF {
+    display: none;
+}
+#hah {
+    display: none;
+}
+#hoh {
+    display: none;
+}
+.card .card-subtitle {
+    font-size: 14px;
+    text-align: right;
+}
+
+.card .card-isi {
+    font-size: 18px;
+    text-align: center;
+}
+
+.card .card-content {
+    font-size: 14px;
+    text-align: left;
+}
+
+.card .card-link-wrapper {
+    margin-top: auto;
+}
+
+.cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cards::-webkit-scrollbar-thumb,
+.cards::-webkit-scrollbar-track {
+    border-radius: 64px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+    background: var(--custom);
+}
+
+.cards::-webkit-scrollbar-track {
+    background: var(--thumb);
+}
+
+@media (min-width: 500px) {
+    .card {
+    flex-basis: calc(50% - 10px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 20px;
+    }
+}
+
+@media (min-width: 700px) {
+    .card {
+    flex-basis: calc(calc(100% / 3) - 20px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 30px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .card {
+    flex-basis: calc(25% - 30px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 40px;
+    }
+}

@@ -1,0 +1,141 @@
+:root {
+    --red: #ef233c;
+    --darkred: #c00424;
+    --platinum: #e5e5e5;
+    --black: #2b2d42;
+    --white: #fff;
+    --thumb: #edf2f4;
+    --custom: #264655;
+}
+
+* {
+    font-family: 'Futura', Arial, sans-serif;
+    text-align: center;
+    vertical-align: middle; 
+    color: #264655;
+}
+
+.navbar {
+    background-color: white;
+    height: 75px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+
+.navbarButton {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.navbarButton:hover {
+    background-color: white;
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.fx {
+    background-image: linear-gradient(to bottom right, #cdefff, #fff);
+    border-radius: 5px;
+    border-color: #264655;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.carousel {
+    height: 500px;
+    width: 1000px;
+    margin-top: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+@media (min-width: 300px) {
+    .top {
+        width: 100%;
+    }
+
+    #logoImage {
+        width: 150px;
+        height: 35px;
+    }
+
+    .navbarButton {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+        font-size: x-small;
+    }
+    
+    .navbarButton:hover {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+
+    .carousel {
+        height: 125px;
+        width: 250px;
+    }
+}
+
+@media (min-width: 500px) {
+    .top {
+        width: 100%;
+    }
+    .card {
+    flex-basis: calc(50% - 10px);
+    }
+
+    .card:not(:last-child) {
+    margin-right: 20px;
+    }
+
+    #logoImage {
+        width: 225px;
+        height: 55px;
+    }
+
+    .navbarButton {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+        transition: 0.3s;
+        font-size: small;
+    }
+    
+    .navbarButton:hover {
+        background-color: white;
+        border-radius: 5px;
+        border-color: #264655;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    }
+}
+
+@media (min-width: 700px) {
+    .top {
+        width: 600px;
+    }
+
+    .navbarButton {
+        font-size: medium;
+    }
+}
+
+@media (min-width: 1100px) {
+    .top {
+        width: 900px;
+    }
+
+    .carousel {
+        height: 500px;
+        width: 1000px;
+    }
+}
