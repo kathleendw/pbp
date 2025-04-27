@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 1,
+        "fields": {
+            "watched": "Watched",
+            "title": "Twenty-Five Twenty-One",
+            "rating": 4.3,
+            "release_date": "Feb 2, 2022",
+            "review": "A wonderful story about growing up and the responsibilities that come with it"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 2,
+        "fields": {
+            "watched": "Watched",
+            "title": "Business Proposal",
+            "rating": 4.1,
+            "release_date": "Feb 28, 2022",
+            "review": "The right blend of romance and humor that makes you crave for more"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 3,
+        "fields": {
+            "watched": "Watched",
+            "title": "My Liberation Notes",
+            "rating": 4.2,
+            "release_date": "Apr 9, 2022",
+            "review": "The pursuit of fulfillment and freedom from the monotony of day-to-day adulthood"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 4,
+        "fields": {
+            "watched": "Watched",
+            "title": "Love All Play",
+            "rating": 3.9,
+            "release_date": "Apr 20, 2022",
+            "review": "A touching show that encourages you to not give up on what you are passionate about"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 5,
+        "fields": {
+            "watched": "Watched",
+            "title": "Sh**ting Stars",
+            "rating": 3.8,
+            "release_date": "Apr 22, 2022",
+            "review": "Shows you the blood, sweat, and tears of the entertainment industry"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 6,
+        "fields": {
+            "watched": "Watched",
+            "title": "Yumi's Cells 2",
+            "rating": 4.2,
+            "release_date": "Jun 10, 2022",
+            "review": "A light, relatable rom-com, telling the story of a girl in search for love"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 7,
+        "fields": {
+            "watched": "Watched",
+            "title": "Extraordinary Attorney Woo",
+            "rating": 4.5,
+            "release_date": "Jun 29, 2022",
+            "review": "A beautifully crafted drama depicting the hardships of being an autistic attorney"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 8,
+        "fields": {
+            "watched": "Waiting",
+            "title": "Big Mouth",
+            "rating": 4.1,
+            "release_date": "Jul 29, 2022",
+            "review": "Mind-blowing plot and twists that leaves you curious and engaged"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 9,
+        "fields": {
+            "watched": "Waiting",
+            "title": "If You Wish Upon Me",
+            "rating": 4.4,
+            "release_date": "Aug 10, 2022",
+            "review": "A quiet, heartwarming story that silently touches your heart and emotion"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 10,
+        "fields": {
+            "watched": "Waiting",
+            "title": "Little Women",
+            "rating": 4.3,
+            "release_date": "Sep 3, 2022",
+            "review": "A masterpiece packed with suspense that demands your attention"
+        }
+    }
+]

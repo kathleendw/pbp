@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="wrapper">
+        <form class="p-3 mt-3" method="POST" action="">
+            {% csrf_token %}
+            <div class="text-center mt-0 name">LOGIN</div>
+            {% if messages %}
+                <div class="massage">
+                    {% for message in messages %}
+                        <label class="massage">{{ message }} </label>
+                        <p></p>
+                    {% endfor %}
+                </div>
+            {% endif %}     
+            <div class="form-field d-flex align-items-center">
+                <input type="text" name="username" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <input type="password" name="password" placeholder="Password" class="form-control">
+            </div>
+            <input class="btn login_btn button-custom" type="submit" value="Login" >
+            <div class="text-center fs-6">
+                <p></p>
+                <label>Don't have an account? </label>
+                <a href="{% url 'todolist:register' %}">Sign Up</a>
+            </div>
+        </form>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+</body>
+</html>
+
+
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    background: #edd1c4;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.wrapper {
+    width: 400px;
+    height: 500px;
+    margin: 50px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #f9f3f0;
+    border-radius: 20px;
+    box-shadow: 13px 13px 20px #dab5a3, -13px -13px 20px #dab5a3;
+}
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 2.4rem;
+    margin: 30px auto;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    color: #b66e6a;
+}
+
+.wrapper .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.1rem;
+    color: rgb(65, 65, 65);
+    padding: 10px 15px 10px 10px;
+}
+
+.wrapper .form-field {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #ccd2d6, inset -8px -8px 8px #fff;
+}
+
+.wrapper .massage {
+    padding-left: 15px;
+    font-size: 15px;
+    color:#ef4f10;
+}
+
+.wrapper .btn {
+    box-shadow: none;
+    width: 100%;
+    height: 40px;
+    background-color: #bf4e48;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+
+.wrapper .btn:hover {
+    background-color: #dab5a3;
+}
+
+.wrapper a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #84302c;
+}
+
+.wrapper a:hover {
+    color: #ef4f10;
+}
+
+</style>

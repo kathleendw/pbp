@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To-Do List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="wrapper">
+      <form class="p-3 mt-3" method="POST" action="">
+        {% csrf_token %}
+            <div class="text-center mt-0 name">To-Do List</div>
+            <div class="text-center mt-0 user">User: {{ user }}</div>
+            <p></p>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </table>
+            <div class="modal fade" id="modalAddTaskForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h6 class="text-center name">What's next?</h6>    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body mx-3"> 
+                    <input type="text" name="title" placeholder="Title" class="form-control" id="input_title">
+                    <p></p>
+                    <input type="text" name="description" placeholder="Description" class="form-control" id="input_description">
+                    <p></p>
+                    <button id="add" class="btn button-custom rounded-pill">Add</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="text-center">
+            <button id="add_task" class="btn button-custom rounded-pill">Add Task</button>
+          </div>
+          <p></p>
+          <a href="{% url 'todolist:logout' %}" class="btn button-custom rounded-pill" >Logout</a> 
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        function addTask(){
+            var itemCount = $(".table > tbody").children().length;
+            for(var i = itemCount; i >= 2; i--){
+                $(".table > tbody > tr:nth-child(" + i + ")").remove();
+        }
+
+        $.get("json/", function(data) {
+            for(var i = 0; i < data.length; i++){
+                var tr = document.createElement("tr");
+                var title_td = document.createElement("td");
+                title_td.append(data[i].fields.title);
+                var description_td = document.createElement("td");
+                description_td.append(data[i].fields.description);
+                var date_td = document.createElement("td");
+                date_td.append(data[i].fields.date);
+                
+                tr.append(title_td);
+                tr.append(description_td);
+                tr.append(date_td);
+                
+                $(".table").append(tr);
+            }
+          });
+        }
+    
+        $(document).ready(function(){
+            addTask();
+            function validate(){
+            if ($('#input_title').val().length > 0 &&
+                $('#input_description').val().length > 0){
+                $("#Send-footer").prop("disabled", false);
+            }
+            else {
+                $("#Send-footer]").prop("disabled", true);
+            }
+        }
+        
+        $('#add_task').click(function(e) {
+            e.preventDefault();
+            $('#modalAddTaskForm').modal();
+        });
+
+        $('#add').click(function(e) {
+            var title = $("#input_title").val();
+            var description = $("#input_description").val();
+            validate();
+            $.post("add/",
+            {
+                title,
+                description,
+            },
+            function(data, status){
+                console.log("add task success");
+                addTask();
+                $("#input_title").val("");
+                $("#input_description").val("");
+            });
+          });
+        });
+    </script>
+</body>
+</html>
+
+<style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    background: #edd1c4;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 50px auto 50px auto;
+    padding: 20px 30px 30px 30px;
+    background-color: #f9f3f0;
+    border-radius: 20px;
+    box-shadow: 13px 13px 20px #dab5a3, -13px -13px 20px #dab5a3;
+}
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 2.4rem;
+    margin: 20px auto;
+    letter-spacing: 1.3px;
+    color: #b66e6a;
+}
+
+.wrapper .user {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #ef4f10;
+}
+
+.wrapper .btn {
+    box-shadow: none;
+    width: 100%;
+    height: 40px;
+    background-color: #bf4e48;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+
+.wrapper .btn:hover {
+    background-color: #dab5a3;
+}
+
+</style>
